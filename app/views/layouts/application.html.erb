@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<%= render 'flash' %>
+
+<header>
+  <h1><%= link_to "Viddit", root_path %></h1>
+  <ul>
+    <% if current_user %>
+      <li><%= link_to "Sign Out", signout_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign In", signin_path %></li>
+      <li><%= link_to "Sign Up", signup_path %></li>
+    <% end %>
+  </ul>
+</header>
+
 <%= yield %>
 
 </body>
