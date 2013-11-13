@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class SignupTest < ActionDispatch::IntegrationTest
+  setup do
+    reset_session!
+  end
+
   test "signup" do
     visit '/'
 
@@ -19,5 +23,15 @@ class SignupTest < ActionDispatch::IntegrationTest
     assert_equal '/', current_path
     refute has_link?('Sign Up')
     assert has_link?('Sign Out')
+  end
+
+  test "signup failure" do
+    visit '/signup'
+
+    within '#new_user' do
+      click_button 'Sign Up'
+    end
+
+    assert_selector 'ul.errors'
   end
 end
