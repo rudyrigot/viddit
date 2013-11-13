@@ -3,22 +3,9 @@ require 'test_helper'
 class VideosControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
-    assert_response :success
-  end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+    assert_not_nil assigns(:videos)
+    assert_not_nil assigns(:video)
+    assert_template :index
   end
-
-  test "should get show" do
-    get :show
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
-  end
-
 end
