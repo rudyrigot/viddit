@@ -41,4 +41,16 @@ class SigninTest < ActionDispatch::IntegrationTest
     click_link 'Sign Out'
     assert has_link? 'Sign Up'
   end
+
+private
+
+  def sign_in(user)
+    visit '/signin'
+
+    within 'form' do
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'secret'
+      click_button 'Sign In'
+    end
+  end
 end
