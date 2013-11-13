@@ -1,8 +1,7 @@
 Viddit::Application.routes.draw do
-  resources :videos
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-  root 'dashboard#index'
+  root 'videos#index'
+
+  resources :videos, except: :index
 
   get  'signup', to: 'users#new'
   post 'signup', to: 'users#create'
