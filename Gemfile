@@ -10,6 +10,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.1.2'
 
+group :development do
+  gem 'guard'
+  gem 'guard-minitest'
+end
+
 group :test do
   gem 'capybara'
 end
