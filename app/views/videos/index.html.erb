@@ -1,2 +1,9 @@
-<h1>Videos#index</h1>
 <%= render 'form' %>
+
+<section class="videos">
+  <% @videos.each do |video| %>
+    <article>
+      <%= image_tag video.thumbnail_url, width: video.thumbnail_width, height: video.thumbnail_height %>
+    </article>
+  <% end %>
+</section>
