@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20131113031721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "videos", force: true do |t|
     t.string   "provider_name"
@@ -30,17 +40,8 @@ ActiveRecord::Schema.define(version: 20131113031721) do
     t.integer  "width"
     t.integer  "thumbnail_height"
     t.integer  "thumbnail_width"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
